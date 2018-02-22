@@ -22,6 +22,7 @@
   <issue>https://github.com/EddyVerbruggen/Custom-URL-scheme/issues</issue>
 
   <preference name="URL_SCHEME" />
+  <preference name="SECOND_URL_SCHEME" />
 
   <engines>
     <engine name="cordova" version=">=3.0.0"/>
@@ -39,6 +40,12 @@
           <key>CFBundleURLSchemes</key>
           <array>
             <string>$URL_SCHEME</string>
+          </array>
+        </dict>
+        <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>$SECOND_URL_SCHEME</string>
           </array>
         </dict>
       </array>
@@ -69,6 +76,12 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <data android:scheme="$URL_SCHEME"/>
+      </intent-filter>
+      <intent-filter>
+        <data android:scheme="$SECOND_URL_SCHEME"/>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
       </intent-filter>
       <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -128,6 +141,7 @@
     <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App" after="Tokens">
       <Extensions>
         <Protocol Name="$URL_SCHEME" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
+        <Protocol Name="$SECOND_URL_SCHEME" NavUriFragment="encodedLaunchUri=%s" TaskID="_default" />
       </Extensions>
     </config-file>
 
